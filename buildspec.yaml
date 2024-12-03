@@ -1,1 +1,21 @@
+version: 0.2
 
+phases:
+  install:
+    runtime-versions:
+      # No specific runtime needed for Nginx installation.
+    commands:
+      - echo "Updating and installing Nginx on Ubuntu..."
+      - sudo apt-get update -y        # Update the package repository to ensure the latest packages
+      - sudo apt-get install -y nginx  # Install Nginx on Ubuntu
+      - sudo systemctl start nginx     # Start the Nginx service
+      - sudo systemctl enable nginx    # Enable Nginx to start on boot
+      - sudo systemctl status nginx    # Verify the Nginx service is running
+
+  post_build:
+    commands:
+      - echo "Nginx installation and setup completed successfully."
+
+artifacts:
+  files:
+    - '**/*'  # If there are any files to be packaged or uploaded, include them here.
