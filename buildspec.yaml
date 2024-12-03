@@ -2,8 +2,6 @@ version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      # No specific runtime needed for Nginx installation.
     commands:
       - echo "Updating and installing Nginx on Ubuntu..."
       - sudo apt-get update -y        # Update the package repository to ensure the latest packages
